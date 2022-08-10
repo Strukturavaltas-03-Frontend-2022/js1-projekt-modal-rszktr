@@ -1,0 +1,218 @@
+body {
+  font-family: Helvetica, sans-serif
+}
+
+html,
+body {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+html.modal-active,
+body.modal-active {
+  width: 100%;
+  overflow: hidden;
+}
+
+
+/* Modalt előhívó gomb */
+.button--open {
+  background-color: cornflowerblue;
+  font-size: 2em;
+  padding: 1em;
+
+  color: white;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+.button--open:hover {
+  background-color: rgb(135, 175, 248);
+}
+
+
+/* Animációk meghívása*/
+#modal-container.animation {
+  transform: scaleY(0.01) scaleX(0);
+  animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.animation .modal-background .modal {
+  transform: scale(0);
+  animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.animation.out {
+  transform: scale(1);
+  animation: fadeOut 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.animation.out .modal-background .modal {
+  animation: moveUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+
+/* Modal formázása */
+#modal-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transform: scale(0);
+}
+
+.modal-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  margin: auto;
+  padding: 20px 24px 44px 44px;
+  box-sizing: border-box;
+
+  border-radius: 3px;
+  border: 1px solid #888;
+  position: relative;
+
+  background-color: #fefefe;
+  color: rgb(82, 82, 82);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.modal__header {
+  align-self: flex-end;
+  font-size: 1.75em;
+}
+
+.modal__title {
+  margin-top: 0.5em;
+  margin-bottom: 0.9em;
+  padding-right: 24px;
+}
+
+.modal__title h2 {
+  font-size: 1.75em;
+  margin: 0;
+}
+
+.modal-body {
+  line-height: 1.75em;
+  padding-right: 24px;
+}
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 13px;
+  padding-top: 1.25em;
+  padding-right: 24px;
+}
+
+.btn--close {
+  color: rgb(79, 85, 94);
+  color: black;
+}
+
+.btn--confirm {
+  background-color: rgb(48, 204, 110);
+  width: 91px;
+  height: 45px;
+  color: white;
+  border: none;
+}
+
+.btn--cancel {
+  background-color: rgb(231, 76, 63);
+  width: 103px;
+  height: 45px;
+  color: white;
+  border: none;
+}
+
+.btn--confirm:hover,
+.btn--cancel:hover,
+.close:hover {
+  cursor: pointer;
+}
+
+
+/* Animációk */
+@keyframes unfoldIn {
+  0% {
+    transform: scaleY(0.005) scaleX(0);
+  }
+
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+  }
+
+  100% {
+    transform: scaleY(1) scaleX(1);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;    
+  }
+  
+  99% {
+    transform: scale(1)
+  }
+  
+  100% {
+    transform: scale(0);
+    opacity: 0;    
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+}
+
+/* Reszponzivitás */
+@media only screen and (min-width: 560px) {
+  .modal {
+    width: 50%;
+  }
+}
