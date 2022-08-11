@@ -43,28 +43,28 @@ body.modal-active {
 
 
 /* Animációk meghívása*/
-#modal-container.animation {
+#modal__container.animation {
   transform: scaleY(0.01) scaleX(0);
   animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-#modal-container.animation .modal-background .modal {
+#modal__container.animation .modal__background .modal {
   transform: scale(0);
   animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-#modal-container.animation.out {
+#modal__container.animation.out {
   transform: scale(1);
   animation: fadeOut 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-#modal-container.animation.out .modal-background .modal {
+#modal__container.animation.out .modal__background .modal {
   animation: moveUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 
 /* Modal formázása */
-#modal-container {
+#modal__container {
   position: fixed;
   height: 100%;
   width: 100%;
@@ -73,13 +73,13 @@ body.modal-active {
   transform: scale(0);
 }
 
-.modal-background {
+.modal__background {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 1;
 }
 
@@ -156,6 +156,49 @@ body.modal-active {
 .close:hover {
   cursor: pointer;
 }
+
+/* Okey */
+.img__container {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 100%;
+}
+
+.button--back {
+  background-color: cornflowerblue;
+  font-size: 2em;
+  margin-top: 20px;
+  padding: 1em;
+  width: 100%;
+
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+.button--open:hover {
+  background-color: rgb(135, 175, 248);
+}
+
+
 
 
 /* Animációk */
